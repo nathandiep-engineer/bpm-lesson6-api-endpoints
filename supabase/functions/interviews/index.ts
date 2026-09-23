@@ -57,6 +57,10 @@ Deno.serve(async (req) => {
     return text('Body must be json', 400)
   }
 
+  // nếu client gửi body là "null" (vẫn valid json, req.json() không throw), thì body.status
+  // ở dòng dưới sẽ throw TypeError chứ không rơi vào catch ở trên. Deno.serve tự bắt và trả 500,
+  // không phải 400 như doc comment ghi. Check thêm `!body || typeof body !== 'object'` trước khi
+  // đọc body.status nha em.
   if (!ALLOWED_STATUS.includes(body.status)) {
     return text(`status must be one of ${ALLOWED_STATUS.join(', ')}`, 400)
   }

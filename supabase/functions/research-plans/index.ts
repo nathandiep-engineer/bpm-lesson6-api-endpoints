@@ -22,6 +22,9 @@ import { json, text, idFromPath } from '../_shared/http.ts'
  *     ]
  *   }
  *
+ * [TBR] design này đúng bài học lesson 5 đó em - research_questions thuộc về research_plan chứ
+ * không lồng theo từng interview, mấy bạn khác hay nhầm chỗ này lắm. Giữ nguyên vậy là chuẩn.
+ *
  * failures:
  *   405 wrong method
  *   400 missing id
